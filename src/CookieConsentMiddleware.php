@@ -1,4 +1,5 @@
-<?php
+
+    <?php
 
 namespace Spatie\CookieConsent;
 
@@ -28,7 +29,9 @@ class CookieConsentMiddleware
 
     protected function containsBodyTag(Response $response): bool
     {
-        return $this->getLastClosingBodyTagPosition($response->getContent()) !== false;
+        return strpos($response->getContent(),
+
+        '</body>') !== false;
     }
 
     protected function addCookieConsentScriptToResponse(Response $response): Response
@@ -37,9 +40,10 @@ class CookieConsentMiddleware
 
         $closingBodyTagPosition = $this->getLastClosingBodyTagPosition($content);
 
-        $content = ''
-            .substr($content, 0, $closingBodyTagPosition)
-            .view('cookie-consent::index')->render()
+        $cookieConsentScript = view('cookie-consent::index')->render();
+
+        $content = substr($content, 0, $closingBodyTagPosition)
+            .$cookieConsentScript
             .substr($content, $closingBodyTagPosition);
 
         return $response->setContent($content);
@@ -47,6 +51,6 @@ class CookieConsentMiddleware
 
     protected function getLastClosingBodyTagPosition(string $content = ''): bool | int
     {
-        return strripos($content, '</body>');
+        return strpos($content, '</body>');
     }
 }
