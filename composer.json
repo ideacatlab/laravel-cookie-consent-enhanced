@@ -1,64 +1,24 @@
 {
     "name": "ideacatlab/laravel-cookie-consent-enhanced",
     "description": "Make your Laravel app comply with the EU cookie law and implement a cookie control system that allows users to manage their own cookie preferences",
-    "keywords": [
-        "ideacatlab",
-        "ideacat",
-        "cookie-consent-enhanced",
-        "enhanced",
-        "cookie-consent",
-        "cookie",
-        "comply",
-        "law",
-        "eu"
-    ],
-    "homepage": "https://github.com/ideacatlab/laravel-cookie-consent-enhanced",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Gheorghe Razvan",
-            "email": "razvan@ideacat.ro",
-            "homepage": "https://ideacat.ro",
-            "role": "Developer"
-        }
-    ],
+    "type": "library",
     "require": {
-        "php": "^8.0",
-        "illuminate/support": "^8.0|^9.0",
-        "illuminate/view": "^8.0|^9.0",
-        "illuminate/cookie": "^8.0|^9.0",
-        "spatie/laravel-package-tools": "^1.9"
+        "php": "^8.2",
+        "illuminate/support": "11.x-dev",
+        "illuminate/view": "11.x-dev",
+        "illuminate/cookie": "11.x-dev",
+        "spatie/laravel-package-tools": "dev-main"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.9",
-        "orchestra/testbench": "^6.0|^7.0",
-        "pestphp/pest": "^1.22"
+        "fakerphp/faker": "2.x-dev",
+        "orchestra/testbench": "9.0.x-dev",
+        "pestphp/pest": "2.x-dev"
     },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Spatie\\CookieConsent\\": "src"
+            "Ideacatlab\\LaravelCookieConsentEnhanced\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Spatie\\CookieConsent\\Test\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/pest"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "IdeaCat\\CookieConsent\\CookieConsentServiceProvider"
-            ]
-        }
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev",
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
-    }
+    "minimum-stability": "dev"
 }
