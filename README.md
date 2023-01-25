@@ -16,7 +16,7 @@ IdeaCat is a web development agency based in Bucharest, Romania. You'll find an 
 You can install the package via composer:
 
 ``` bash
-composer require spatie/laravel-cookie-consent
+composer require ideacatlab/laravel-cookie-consent
 ```
 
 The package will automatically register itself.
@@ -143,7 +143,7 @@ Please see [CONTRIBUTING](https://github.com/ideacatlab/.github/blob/main/CONTRI
 
 ## Security
 
-If you discover any security-related issues, please email freek@spatie.be instead of using the issue tracker.
+If you discover any security-related issues, please email razvan@ideacat.ro instead of using the issue tracker.
 
 ## Credits
 
