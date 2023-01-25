@@ -1,6 +1,6 @@
 <?php
 
-namespace IdeaCat\LaravelCookieConsentEnhanced;
+namespace Ideacatlab\LaravelCookieConsentEnhanced;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Cookie\Middleware\EncryptCookies;

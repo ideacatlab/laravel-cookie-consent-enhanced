@@ -1,7 +1,7 @@
 
     <?php
 
-namespace IdeaCat\LaravelCookieConsentEnhanced;
+namespace Ideacatlab\LaravelCookieConsentEnhanced;
 
 use Closure;
 use Illuminate\Http\Response;
