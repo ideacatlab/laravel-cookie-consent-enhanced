@@ -26,13 +26,13 @@ Optionally you can publish the config-file:
 ```bash
 php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-config"
 ```
-This is the contents of the published config-file:
-
+Migrate and seed the database
 
 ```bash
+
 php artisan migrate --seed"
 ```
-Migrate and seed the database
+This is the contents of the published config-file:
 
 ```php
 return [
