@@ -10,7 +10,6 @@
         "spatie/laravel-package-tools": "dev-main"
     },
     "require-dev": {
-        "fakerphp/faker": "2.x-dev",
         "orchestra/testbench": "9.0.x-dev",
         "pestphp/pest": "2.x-dev"
     },
