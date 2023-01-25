@@ -10,8 +10,6 @@
         "spatie/laravel-package-tools": "dev-main"
     },
     "require-dev": {
-        "fakerphp/faker": "^2",
-        "orchestra/testbench": "^9",
         "pestphp/pest": "^2"
     },
     "license": "MIT",
