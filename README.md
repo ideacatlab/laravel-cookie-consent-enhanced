@@ -24,7 +24,7 @@ The package will automatically register itself.
 Optionally you can publish the config-file:
 
 ```bash
-php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-config"
+php artisan vendor:publish --provider="Ideacatlab\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-config"
 ```
 This is the contents of the published config-file:
 
@@ -79,7 +79,7 @@ When the user clicks "Allow cookies" a `cookie_consent` cookie will be set and t
 If you want to modify the text shown in the dialog you can publish the lang-files with this command:
 
 ```bash
-php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-translations"
+php artisan vendor:publish --provider="Ideacatlab\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-translations"
 ```
 
 This will publish this file to `resources/lang/vendor/cookie-consent/en/texts.php`.
@@ -99,14 +99,14 @@ This will publish this file to `resources/lang/vendor/cookie-consent/en/texts.ph
 If you need full control over the contents of the dialog. You can publish the views of the package:
 
 ```bash
-php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-views"
+php artisan vendor:publish --provider="Ideacatlab\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-views"
 ```
 
 This will copy the `index` and `dialogContents` view files over to `resources/views/vendor/cookie-consent`. You probably only want to modify the `dialogContents` view. If you need to modify the JavaScript code of this package you can do so in the `index` view file.
 
 ## Using the middleware
 
-Instead of including `cookie-consent::index` in your view you could opt to add the `IdeaCat\CookieConsent\CookieConsentMiddleware` to your kernel:
+Instead of including `cookie-consent::index` in your view you could opt to add the `Ideacatlab\CookieConsent\CookieConsentMiddleware` to your kernel:
 
 ```php
 // app/Http/Kernel.php
@@ -115,7 +115,7 @@ class Kernel extends HttpKernel
 {
     protected $middleware = [
         // ...
-        \IdeaCat\CookieConsent\CookieConsentMiddleware::class,
+        \Ideacatlab\CookieConsent\CookieConsentMiddleware::class,
     ];
 
     // ...
