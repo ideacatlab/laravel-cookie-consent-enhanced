@@ -50,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "IdeaCat\\LaravelCookieConsentEnhanced\\CookieConsentServiceProvider"
+                "Ideacatlab\\LaravelCookieConsentEnhanced\\CookieConsentServiceProvider"
             ]
         }
     },
