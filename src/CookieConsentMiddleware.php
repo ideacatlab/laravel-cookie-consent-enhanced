@@ -1,7 +1,7 @@
 
     <?php
 
-namespace Spatie\CookieConsent;
+namespace Spatie\LaravelCookieConsentEnhanced;
 
 use Closure;
 use Illuminate\Http\Response;

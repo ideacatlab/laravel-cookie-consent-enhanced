@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\CookieConsent;
+namespace Spatie\LaravelCookieConsentEnhanced;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Cookie\Middleware\EncryptCookies;
