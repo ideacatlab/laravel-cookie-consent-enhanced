@@ -3,15 +3,16 @@
     "description": "Make your Laravel app comply with the EU cookie law and implement a cookie control system that allows users to manage their own cookie preferences",
     "type": "library",
     "require": {
-        "php": "^8.2",
-        "illuminate/support": "11.x-dev",
-        "illuminate/view": "11.x-dev",
-        "illuminate/cookie": "11.x-dev",
+        "php": "^8.1",
+        "illuminate/support": "^11",
+        "illuminate/view": "^11",
+        "illuminate/cookie": "^11",
         "spatie/laravel-package-tools": "dev-main"
     },
     "require-dev": {
-        "orchestra/testbench": "9.0.x-dev",
-        "pestphp/pest": "2.x-dev"
+        "fakerphp/faker": "^2",
+        "orchestra/testbench": "^9",
+        "pestphp/pest": "^2"
     },
     "license": "MIT",
     "autoload": {
