@@ -1,26 +1,19 @@
+<p align="center"><a href="https://ideacat.ro" target="_blank"><img src="https://raw.githubusercontent.com/ideacatlab/laravel-cookie-consent-enhanced/master/.github/images/github-cookie-consent-logo.png" width="400"></a></p>
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
-# Make your Laravel app comply with the crazy EU cookie law
+# Make your Laravel app comply with the EU law reffering cookie cookie  
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-cookie-consent.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-cookie-consent)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/spatie/laravel-cookie-consent/run-tests?label=tests)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-cookie-consent.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-cookie-consent)
 
-All sites owned by EU citizens or targeted towards EU citizens must comply with a crazy EU law. This law requires a dialog to be displayed to inform the users of your websites how cookies are being used. You can read more info on the legislation on [the site of the European Commission](http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm#section_2).
+All sites owned by EU citizens or targeted towards EU citizens must comply with a EU law referring cookie usage. This law requires a dialog to be displayed to inform the users of your websites how cookies are being used. You can read more info on the legislation on [the site of the European Commission](http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm#section_2).
 
 This package provides an easily configurable view to display the message. Also included is JavaScript code to set a cookie when a user agrees with the cookie policy. The package will not display the dialog when that cookie has been set.
 
-Spatie is a web design agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+IdeaCat is a web development agency based in Bucharest, Romania. You'll find an overview of all our open source projects [on our website](https://ideacat.ro/opensource).
 
-## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-cookie-consent.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-cookie-consent)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -35,10 +28,15 @@ The package will automatically register itself.
 Optionally you can publish the config-file:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-config"
+php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-config"
 ```
-
 This is the contents of the published config-file:
+
+
+```bash
+php artisan migrate --seed"
+```
+Migrate and seed the database
 
 ```php
 return [
@@ -52,7 +50,7 @@ return [
      * The name of the cookie in which we store if the user
      * has agreed to accept the conditions.
      */
-    'cookie_name' => 'laravel_cookie_consent',
+    'cookie_name' => 'cookie_consent',
 
     /*
      * Set the cookie duration in days.  Default is 365 * 20.
@@ -78,14 +76,14 @@ This will render the following dialog that, when styled, will look very much lik
 
 The default styling provided by this package uses TailwindCSS v2 to provide a floating banner at the bottom of the page.
 
-When the user clicks "Allow cookies" a `laravel_cookie_consent` cookie will be set and the dialog will be removed from the DOM. On the next request, Laravel will notice that the `laravel_cookie_consent` has been set and will not display the dialog again
+When the user clicks "Allow cookies" a `cookie_consent` cookie will be set and the dialog will be removed from the DOM. On the next request, Laravel will notice that the `laravel_cookie_consent` has been set and will not display the dialog again
 
 ## Customising the dialog texts
 
 If you want to modify the text shown in the dialog you can publish the lang-files with this command:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-translations"
+php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-translations"
 ```
 
 This will publish this file to `resources/lang/vendor/cookie-consent/en/texts.php`.
@@ -105,14 +103,14 @@ This will publish this file to `resources/lang/vendor/cookie-consent/en/texts.ph
 If you need full control over the contents of the dialog. You can publish the views of the package:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-views"
+php artisan vendor:publish --provider="IdeaCat\CookieConsent\CookieConsentServiceProvider" --tag="cookie-consent-views"
 ```
 
 This will copy the `index` and `dialogContents` view files over to `resources/views/vendor/cookie-consent`. You probably only want to modify the `dialogContents` view. If you need to modify the JavaScript code of this package you can do so in the `index` view file.
 
 ## Using the middleware
 
-Instead of including `cookie-consent::index` in your view you could opt to add the `Spatie\CookieConsent\CookieConsentMiddleware` to your kernel:
+Instead of including `cookie-consent::index` in your view you could opt to add the `IdeaCat\CookieConsent\CookieConsentMiddleware` to your kernel:
 
 ```php
 // app/Http/Kernel.php
@@ -121,7 +119,7 @@ class Kernel extends HttpKernel
 {
     protected $middleware = [
         // ...
-        \Spatie\CookieConsent\CookieConsentMiddleware::class,
+        \IdeaCat\CookieConsent\CookieConsentMiddleware::class,
     ];
 
     // ...
@@ -145,7 +143,7 @@ composer test
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/ideacatlab/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security
 
@@ -153,8 +151,7 @@ If you discover any security-related issues, please email freek@spatie.be instea
 
 ## Credits
 
-- [Freek Van der Herten](https://github.com/freekmurze)
-- [Willem Van Bockstal](https://github.com/willemvb)
+- [Razvan Gheorghe](https://github.com/ideacatlab)
 - [All Contributors](../../contributors)
 
 ## License

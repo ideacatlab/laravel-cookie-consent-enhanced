@@ -1,27 +1,24 @@
 {
-    "name": "spatie/cookie-consent",
-    "description": "Make your Laravel app comply with the crazy EU cookie law",
+    "name": "ideacatlab/laravel-cookie-consent-enhanced",
+    "description": "Make your Laravel app comply with the EU cookie law and implement a cookie control system that allows users to manage their own cookie preferences",
     "keywords": [
-        "spatie",
+        "ideacatlab",
+        "ideacat",
+        "cookie-consent-enhanced",
+        "enhanced",
         "cookie-consent",
         "cookie",
         "comply",
         "law",
         "eu"
     ],
-    "homepage": "https://github.com/spatie/cookie-consent",
+    "homepage": "https://github.com/ideacatlab/laravel-cookie-consent-enhanced",
     "license": "MIT",
     "authors": [
         {
-            "name": "Freek Van der Herten",
-            "email": "freek@spatie.be",
-            "homepage": "https://spatie.be",
-            "role": "Developer"
-        },
-        {
-            "name": "Willem Van Bockstal",
-            "email": "willem@spatie.be",
-            "homepage": "https://spatie.be",
+            "name": "Gheorghe Razvan",
+            "email": "razvan@ideacat.ro",
+            "homepage": "https://ideacat.ro",
             "role": "Developer"
         }
     ],
@@ -53,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\CookieConsent\\CookieConsentServiceProvider"
+                "IdeaCat\\CookieConsent\\CookieConsentServiceProvider"
             ]
         }
     },
