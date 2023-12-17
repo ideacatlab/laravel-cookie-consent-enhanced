@@ -16,7 +16,7 @@ IdeaCat is a web development agency based in Bucharest, Romania. You'll find an 
 You can install the package via composer:
 
 ``` bash
-composer require ideacatlab/laravel-cookie-consent
+composer require ideacatlab/laravel-cookie-consent-enhanced
 ```
 
 The package will automatically register itself.
