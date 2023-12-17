@@ -1,5 +1,4 @@
-
-    <?php
+<?php
 
 namespace Ideacatlab\LaravelCookieConsentEnhanced;
 
@@ -12,15 +11,15 @@ class CookieConsentMiddleware
     {
         $response = $next($request);
 
-        if (! config('cookie-consent.enabled')) {
+        if (!config('cookie-consent.enabled')) {
             return $response;
         }
 
-        if (! $response instanceof Response) {
+        if (!$response instanceof Response) {
             return $response;
         }
 
-        if (! $this->containsBodyTag($response)) {
+        if (!$this->containsBodyTag($response)) {
             return $response;
         }
 
@@ -29,9 +28,7 @@ class CookieConsentMiddleware
 
     protected function containsBodyTag(Response $response): bool
     {
-        return strpos($response->getContent(),
-
-        '</body>') !== false;
+        return $this->getLastClosingBodyTagPosition($response->getContent()) !== false;
     }
 
     protected function addCookieConsentScriptToResponse(Response $response): Response
@@ -40,17 +37,16 @@ class CookieConsentMiddleware
 
         $closingBodyTagPosition = $this->getLastClosingBodyTagPosition($content);
 
-        $cookieConsentScript = view('cookie-consent::index')->render();
-
-        $content = substr($content, 0, $closingBodyTagPosition)
-            .$cookieConsentScript
-            .substr($content, $closingBodyTagPosition);
+        $content = ''
+            . substr($content, 0, $closingBodyTagPosition)
+            . view('cookie-consent::index')->render()
+            . substr($content, $closingBodyTagPosition);
 
         return $response->setContent($content);
     }
 
     protected function getLastClosingBodyTagPosition(string $content = ''): bool | int
     {
-        return strpos($content, '</body>');
+        return strripos($content, '</body>');
     }
 }

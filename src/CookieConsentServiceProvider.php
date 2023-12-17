@@ -22,7 +22,7 @@ class CookieConsentServiceProvider extends PackageServiceProvider
 
                 $alreadyConsentedWithCookies = Cookie::has($cookieConsentConfig['cookie_name']);
 
-                $view->with(compact('cookieConsentConfig', 'alreadyConsentedWithCookies'));
+                $view->with(compact('alreadyConsentedWithCookies', 'cookieConsentConfig'));
             });
     }
 
