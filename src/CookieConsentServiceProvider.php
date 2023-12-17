@@ -7,8 +7,9 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Cookie;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class CookieConsentServiceProvider extends PackageServiceProvider
+class CookieConsentServiceProvider extends ServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -31,5 +32,38 @@ class CookieConsentServiceProvider extends PackageServiceProvider
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
         });
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if (app()->runningInConsole()) {
+            $this->registerMigrations();
+
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'cookie-consent-migrations');
+
+            $this->publishes([
+                __DIR__ . '/../config/cookie-consent.php' => config_path('cookie-consent.php'),
+            ], 'cookie-consent-config');
+        }
+    }
+
+
+    /**
+     * Register Laravel Cookie Consent Enhanced's migration files.
+     *
+     * @return void
+     */
+    protected function registerMigrations()
+    {
+        if (CookieConsentMiddleware::shouldRunMigrations()) {
+            return $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
     }
 }

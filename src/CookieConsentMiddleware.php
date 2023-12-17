@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 
 class CookieConsentMiddleware
 {
+    public static $runsMigrations = true;
+
     public function handle($request, Closure $next)
     {
         $response = $next($request);
@@ -48,5 +50,27 @@ class CookieConsentMiddleware
     protected function getLastClosingBodyTagPosition(string $content = ''): bool | int
     {
         return strripos($content, '</body>');
+    }
+
+    /**
+     * Determine if Laravel Cookie Consent Enhanced 's migrations should be run.
+     *
+     * @return bool
+     */
+    public static function shouldRunMigrations()
+    {
+        return static::$runsMigrations;
+    }
+
+    /**
+     * Configure Laravel Cookie Consent Enhanced to not register its migrations.
+     *
+     * @return static
+     */
+    public static function ignoreMigrations()
+    {
+        static::$runsMigrations = false;
+
+        return new static;
     }
 }
