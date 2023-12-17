@@ -4,12 +4,25 @@ namespace Ideacatlab\LaravelCookieConsentEnhanced;
 
 use Closure;
 use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class CookieConsentMiddleware
 {
+    /**
+     * Indicates whether migrations should be run for Laravel Cookie Consent Enhanced.
+     *
+     * @var bool
+     */
     public static $runsMigrations = true;
 
-    public function handle($request, Closure $next)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next): mixed
     {
         $response = $next($request);
 
@@ -28,11 +41,23 @@ class CookieConsentMiddleware
         return $this->addCookieConsentScriptToResponse($response);
     }
 
+    /**
+     * Check if the response contains a closing body tag.
+     *
+     * @param  \Illuminate\Http\Response  $response
+     * @return bool
+     */
     protected function containsBodyTag(Response $response): bool
     {
         return $this->getLastClosingBodyTagPosition($response->getContent()) !== false;
     }
 
+    /**
+     * Add the Cookie Consent script to the response.
+     *
+     * @param  \Illuminate\Http\Response  $response
+     * @return \Illuminate\Http\Response
+     */
     protected function addCookieConsentScriptToResponse(Response $response): Response
     {
         $content = $response->getContent();
@@ -47,6 +72,12 @@ class CookieConsentMiddleware
         return $response->setContent($content);
     }
 
+    /**
+     * Get the position of the last closing body tag in the content.
+     *
+     * @param  string  $content
+     * @return bool|int
+     */
     protected function getLastClosingBodyTagPosition(string $content = ''): bool | int
     {
         return strripos($content, '</body>');
@@ -57,7 +88,7 @@ class CookieConsentMiddleware
      *
      * @return bool
      */
-    public static function shouldRunMigrations()
+    public static function shouldRunMigrations(): bool
     {
         return static::$runsMigrations;
     }
@@ -67,7 +98,7 @@ class CookieConsentMiddleware
      *
      * @return static
      */
-    public static function ignoreMigrations()
+    public static function ignoreMigrations(): static
     {
         static::$runsMigrations = false;
 

@@ -51,6 +51,14 @@ class CookieConsentServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/cookie-consent.php' => config_path('cookie-consent.php'),
             ], 'cookie-consent-config');
+
+            $this->publishes([
+                __DIR__ . '/../resources/lang' => config_path('lang'),
+            ], 'cookie-consent-translations');
+
+            $this->publishes([
+                __DIR__ . '/../resources/views' => config_path('views'),
+            ], 'cookie-consent-views');
         }
     }
 
