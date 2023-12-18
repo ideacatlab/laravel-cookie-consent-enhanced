@@ -43,25 +43,26 @@ class CookieConsentServiceProvider extends ServiceProvider
     {
         if (app()->runningInConsole()) {
             $this->registerMigrations();
-
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),
             ], 'cookie-consent-migrations');
-
             $this->publishes([
                 __DIR__ . '/../config/cookie-consent.php' => config_path('cookie-consent.php'),
             ], 'cookie-consent-config');
-
             $this->publishes([
-                __DIR__ . '/../resources/lang' => config_path('lang'),
+                __DIR__ . '/../resources/lang' => lang_path('lang/vendor/cookie-consent'),
             ], 'cookie-consent-translations');
-
             $this->publishes([
-                __DIR__ . '/../resources/views' => config_path('views'),
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/cookie-consent'),
             ], 'cookie-consent-views');
+            $this->publishes([
+                __DIR__ . '/../public/css' => public_path('public/vendor/cookie-consent'),
+            ], 'cookie-consent-assets');
+            $this->publishes([
+                __DIR__ . '/../public/images' => public_path('public/vendor/cookie-consent'),
+            ], 'cookie-consent-assets');
         }
     }
-
 
     /**
      * Register Laravel Cookie Consent Enhanced's migration files.
