@@ -26,7 +26,7 @@ class CookieConsentMiddleware
     {
         $response = $next($request);
 
-        if (!config('cookie-consent.enabled')) {
+        if (!config('cookie-consent-enhanced.enabled')) {
             return $response;
         }
 

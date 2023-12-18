@@ -12,7 +12,7 @@ it('can display a cookie consent view', function () {
 });
 
 it('will not show the cookie consent view when the package is disabled', function () {
-    config()->set('cookie-consent.enabled', false);
+    config()->set('cookie-consent-enhanced.enabled', false);
 
     $html = view('layout')->render();
 
@@ -20,7 +20,7 @@ it('will not show the cookie consent view when the package is disabled', functio
 });
 
 it('will not show the cookie consent view when the user has already consented', function () {
-    request()->cookies->set(config('cookie-consent.cookie_name'), config('cookie-consent.cookie_name'), 1);
+    request()->cookies->set(config('cookie-consent-enhanced.cookie_name'), config('cookie-consent-enhanced.cookie_name'), 1);
 
     $html = view('layout')->render();
 

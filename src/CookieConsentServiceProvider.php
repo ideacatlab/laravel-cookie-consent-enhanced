@@ -9,7 +9,7 @@ use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
-class CookieConsentServiceProvider extends ServiceProvider
+class CookieConsentServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

@@ -1,6 +1,6 @@
 <div class="ic_cookie_box js-cookie-consent cookie-consent">
     <div class="ic_cookie_image_box">
-        <img src="{{ url('/vendor/cookie-consent/images/cookie.svg') }}" alt="cookie consent image">
+        <img src="{{ url('/vendor/cookie-consent-enhanced/images/cookie.svg') }}" alt="cookie consent image">
     </div>
     <div class="ic_cookie_text_box">
         <p class="ic_cookie_hello">Hey, have a cookie!</p>
@@ -12,4 +12,4 @@
         </div>
     </div>
 </div>
-<link rel="stylesheet" href="{{ url('/vendor/cookie-consent/css/cookie-consent.css') }}">
+<link rel="stylesheet" href="{{ url('/vendor/cookie-consent-enhanced/css/cookie-consent.css') }}">
