@@ -45,22 +45,22 @@ class CookieConsentServiceProvider extends ServiceProvider
             $this->registerMigrations();
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),
-            ], 'cookie-consent-migrations');
+            ], 'cookie-consent-migrations', 'laravel-assets');
             $this->publishes([
                 __DIR__ . '/../config/cookie-consent.php' => config_path('cookie-consent.php'),
             ], 'cookie-consent-config');
             $this->publishes([
-                __DIR__ . '/../resources/lang' => lang_path('lang/vendor/cookie-consent'),
-            ], 'cookie-consent-translations');
+                __DIR__ . '/../resources/lang' => lang_path('vendor/cookie-consent'),
+            ], 'cookie-consent-translations', 'laravel-assets');
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/cookie-consent'),
-            ], 'cookie-consent-views');
+            ], 'cookie-consent-views', 'laravel-assets');
             $this->publishes([
-                __DIR__ . '/../public/css' => public_path('public/vendor/cookie-consent'),
-            ], 'cookie-consent-assets');
+                __DIR__ . '/../public/css' => public_path('vendor/cookie-consent'),
+            ], 'cookie-consent-assets', 'laravel-assets');
             $this->publishes([
-                __DIR__ . '/../public/images' => public_path('public/vendor/cookie-consent'),
-            ], 'cookie-consent-assets');
+                __DIR__ . '/../public/images' => public_path('vendor/cookie-consent'),
+            ], 'cookie-consent-assets', 'laravel-assets');
         }
     }
 
