@@ -18,7 +18,8 @@ class CookieConsentServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasTranslations()
             ->hasAssets()
-            ->hasMigration('create_cookie_consents_table', 'create_erasure_requests_table')
+            ->hasMigrations(['create_cookie_consents_table', 'create_erasure_requests_table'])
+            ->runsMigrations()
             ->hasViewComposer('cookie-consent-enhanced::index', function (View $view) {
                 $cookieConsentConfig = config('cookie-consent-enhanced');
 
