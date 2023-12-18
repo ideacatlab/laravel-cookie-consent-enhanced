@@ -17,8 +17,7 @@ class CookieConsentServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasTranslations()
-            ->hasAssets('css/cookie-consent.css', 'images/cookie.svg')
-            ->hasMigration('create_cookie_consents', 'create_erasure_requests')
+            ->hasAssets()
             ->hasViewComposer('cookie-consent-enhanced::index', function (View $view) {
                 $cookieConsentConfig = config('cookie-consent-enhanced');
 
@@ -40,40 +39,25 @@ class CookieConsentServiceProvider extends PackageServiceProvider
      *
      * @return void
      */
-    // public function boot(): void
-    // {
-    //     if (app()->runningInConsole()) {
-    //         $this->registerMigrations();
-    //         $this->publishes([
-    //             __DIR__ . '/../database/migrations' => database_path('migrations'),
-    //         ], 'cookie-consent-enhanced-migrations');
-    //         $this->publishes([
-    //             __DIR__ . '/../config/cookie-consent-enhanced.php' => config_path('cookie-consent-enhanced.php'),
-    //         ], 'cookie-consent-enhanced-config');
-    //         $this->publishes([
-    //             __DIR__ . '/../resources/lang' => lang_path('vendor/cookie-consent-enhanced'),
-    //         ], 'cookie-consent-enhanced-translations');
-    //         $this->publishes([
-    //             __DIR__ . '/../resources/views' => resource_path('views/vendor/cookie-consent-enhanced'),
-    //         ], 'cookie-consent-enhanced-views');
-    //         $this->publishes([
-    //             __DIR__ . '/../public/css' => public_path('vendor/cookie-consent-enhanced'),
-    //         ], 'cookie-consent-enhanced-assets');
-    //         $this->publishes([
-    //             __DIR__ . '/../public/images' => public_path('vendor/cookie-consent-enhanced'),
-    //         ], 'cookie-consent-enhanced-assets');
-    //     }
-    // }
+    public function boot(): void
+    {
+        if (app()->runningInConsole()) {
+            $this->registerMigrations();
+            $this->publishes([
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+            ], 'cookie-consent-enhanced-migrations');
+        }
+    }
 
     /**
      * Register Laravel Cookie Consent Enhanced's migration files.
      *
      * @return void
      */
-    // protected function registerMigrations()
-    // {
-    //     if (CookieConsentMiddleware::shouldRunMigrations()) {
-    //         return $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-    //     }
-    // }
+    protected function registerMigrations()
+    {
+        if (CookieConsentMiddleware::shouldRunMigrations()) {
+            return $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
+    }
 }

@@ -82,4 +82,26 @@ class CookieConsentMiddleware
     {
         return strripos($content, '</body>');
     }
+
+    /**
+     * Determine if Laravel Cookie Consent Enhanced 's migrations should be run.
+     *
+     * @return bool
+     */
+    public static function shouldRunMigrations(): bool
+    {
+        return static::$runsMigrations;
+    }
+
+    /**
+     * Configure Laravel Cookie Consent Enhanced to not register its migrations.
+     *
+     * @return static
+     */
+    public static function ignoreMigrations(): static
+    {
+        static::$runsMigrations = false;
+
+        return new static;
+    }
 }
