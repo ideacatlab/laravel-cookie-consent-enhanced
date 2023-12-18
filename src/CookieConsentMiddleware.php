@@ -3,8 +3,8 @@
 namespace Ideacatlab\LaravelCookieConsentEnhanced;
 
 use Closure;
-use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CookieConsentMiddleware
 {
@@ -26,15 +26,15 @@ class CookieConsentMiddleware
     {
         $response = $next($request);
 
-        if (!config('cookie-consent-enhanced.enabled')) {
+        if (! config('cookie-consent-enhanced.enabled')) {
             return $response;
         }
 
-        if (!$response instanceof Response) {
+        if (! $response instanceof Response) {
             return $response;
         }
 
-        if (!$this->containsBodyTag($response)) {
+        if (! $this->containsBodyTag($response)) {
             return $response;
         }
 

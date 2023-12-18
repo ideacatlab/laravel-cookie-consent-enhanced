@@ -1,8 +1,8 @@
 <?php
 
+use Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentMiddleware;
 
 it('injects the if a closing body tag is found', function () {
     $request = new Request();

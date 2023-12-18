@@ -32,7 +32,8 @@
     "require-dev": {
         "fakerphp/faker": "^1.23.0",
         "orchestra/testbench": "^8.10.2",
-        "pestphp/pest": "^2.18.2"
+        "pestphp/pest": "^2.18.2",
+        "friendsofphp/php-cs-fixer": "^3.41"
     },
     "autoload": {
         "psr-4": {
