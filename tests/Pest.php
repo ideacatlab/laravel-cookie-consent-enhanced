@@ -35,7 +35,7 @@ function assertConsentDialogIsNotDisplayed(string $html)
 function isConsentDialogDisplayed(string $html): bool
 {
     return Str::contains($html, [
-        trans('cookie-consent::texts.message'),
-        trans('cookie-consent::texts.button_text'),
+        trans('cookie-consent-enhanced::texts.message'),
+        trans('cookie-consent-enhanced::texts.button_text'),
     ]);
 }

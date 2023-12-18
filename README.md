@@ -24,7 +24,7 @@ The package will automatically register itself in your Laravel application.
 For added flexibility, you have the option to publish the configuration file. Execute the following command:
 
 ```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-config"
+php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-config"
 ```
 
 ### 3. Publish Database Migrations
@@ -32,7 +32,7 @@ php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\C
 To incorporate the necessary database structure, publish the migrations using the command:
 
 ```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-migrations"
+php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-migrations"
 ```
 
 ### 4. Migrate the Database
@@ -45,7 +45,7 @@ php artisan migrate
 
 ### Configuration Details
 
-Upon publishing the configuration file, you'll find a file named `cookie-consent.php` in the `config` directory. Here's an overview of the configuration options:
+Upon publishing the configuration file, you'll find a file named `cookie-consent-enhanced.php` in the `config` directory. Here's an overview of the configuration options:
 
 ```php
 return [
@@ -79,7 +79,7 @@ Ensure you set the cookie domain by using the 'domain' key in the `config/sessio
 To effortlessly display the cookie consent dialog in your template, include the following line in your Blade file:
 
 ```blade
-@include('cookie-consent::index')
+@include('cookie-consent-enhanced::index')
 ```
 
 This will render a dialog similar to the one depicted below. Note that the default styling, powered by TailwindCSS v2, creates a floating banner at the bottom of the page.
@@ -93,10 +93,10 @@ Upon clicking "Allow cookies," a `cookie_consent` cookie will be set, and the di
 If you wish to modify the text displayed in the dialog, publish the language files using the following command:
 
 ```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-translations"
+php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-translations"
 ```
 
-This will publish the file to `resources/lang/vendor/cookie-consent/en/texts.php`. You can then customize the text as follows:
+This will publish the file to `resources/lang/vendor/cookie-consent-enhanced/en/texts.php`. You can then customize the text as follows:
 
 ```php
 return [
@@ -105,7 +105,7 @@ return [
 ];
 ```
 
-For translations, copy the file to, for instance, `resources/lang/vendor/cookie-consent/fr/texts.php` and provide the French translations.
+For translations, copy the file to, for instance, `resources/lang/vendor/cookie-consent-enhanced/fr/texts.php` and provide the French translations.
 
 ### Customizing Dialog Contents
 
@@ -115,11 +115,11 @@ For full control over the dialog contents, publish the package views:
 php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-views"
 ```
 
-This will copy the `index` and `dialogContents` view files to `resources/views/vendor/cookie-consent`. Typically, you only need to modify the `dialogContents` view. Adjusting the JavaScript code is possible in the `index` view file.
+This will copy the `index` and `dialogContents` view files to `resources/views/vendor/cookie-consent-enhanced`. Typically, you only need to modify the `dialogContents` view. Adjusting the JavaScript code is possible in the `index` view file.
 
 ### Using the Middleware
 
-Instead of manually including `cookie-consent::index` in your view, consider adding the middleware to your kernel:
+Instead of manually including `cookie-consent-enhanced::index` in your view, consider adding the middleware to your kernel:
 
 ```php
 // app/Http/Kernel.php
@@ -135,7 +135,7 @@ class Kernel extends HttpKernel
 }
 ```
 
-This will automatically add `cookie-consent::index` to your response just before the closing body tag.
+This will automatically add `cookie-consent-enhanced::index` to your response just before the closing body tag.
 
 ### Notice
 

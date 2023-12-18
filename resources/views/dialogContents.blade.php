@@ -4,11 +4,11 @@
     </div>
     <div class="ic_cookie_text_box">
         <p class="ic_cookie_hello">Hey, have a cookie!</p>
-        <p class="ic_cookie_explain">{!! trans('cookie-consent::texts.message') !!}</p>
+        <p class="ic_cookie_explain">{!! trans('cookie-consent-enhanced::texts.message') !!}</p>
     </div>
     <div class="js-cookie-consent-agree cookie-consent__agree ic_button_cookie_div">
         <div class="ic_cookie_button">
-            <span class="ic_span_cookie_consent">{{ trans('cookie-consent::texts.agree') }}</span>
+            <span class="ic_span_cookie_consent">{{ trans('cookie-consent-enhanced::texts.agree') }}</span>
         </div>
     </div>
 </div>

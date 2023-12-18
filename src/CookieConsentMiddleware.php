@@ -66,7 +66,7 @@ class CookieConsentMiddleware
 
         $content = ''
             . substr($content, 0, $closingBodyTagPosition)
-            . view('cookie-consent::index')->render()
+            . view('cookie-consent-enhanced::index')->render()
             . substr($content, $closingBodyTagPosition);
 
         return $response->setContent($content);

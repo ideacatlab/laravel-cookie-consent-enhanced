@@ -1,8 +1,8 @@
 <?php
 
 it('provides translations', function () {
-    assertTranslationExists('cookie-consent::texts.message');
-    assertTranslationExists('cookie-consent::texts.agree');
+    assertTranslationExists('cookie-consent-enhanced::texts.message');
+    assertTranslationExists('cookie-consent-enhanced::texts.agree');
 });
 
 it('can display a cookie consent view', function () {

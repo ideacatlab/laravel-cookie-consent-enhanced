@@ -14,12 +14,12 @@ class CookieConsentServiceProvider extends ServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-cookie-consent')
+            ->name('laravel-cookie-consent-enhanced')
             ->hasConfigFile()
             ->hasViews()
             ->hasTranslations()
-            ->hasViewComposer('cookie-consent::index', function (View $view) {
-                $cookieConsentConfig = config('cookie-consent');
+            ->hasViewComposer('cookie-consent-enhanced::index', function (View $view) {
+                $cookieConsentConfig = config('cookie-consent-enhanced');
 
                 $alreadyConsentedWithCookies = Cookie::has($cookieConsentConfig['cookie_name']);
 
@@ -30,7 +30,7 @@ class CookieConsentServiceProvider extends ServiceProvider
     public function packageBooted(): void
     {
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
-            $encryptCookies->disableFor(config('cookie-consent.cookie_name'));
+            $encryptCookies->disableFor(config('cookie-consent-enhanced.cookie_name'));
         });
     }
 
@@ -45,22 +45,22 @@ class CookieConsentServiceProvider extends ServiceProvider
             $this->registerMigrations();
             $this->publishes([
                 __DIR__ . '/../database/migrations' => database_path('migrations'),
-            ], 'cookie-consent-migrations', 'laravel-assets');
+            ], 'cookie-consent-enhanced-migrations');
             $this->publishes([
-                __DIR__ . '/../config/cookie-consent.php' => config_path('cookie-consent.php'),
-            ], 'cookie-consent-config');
+                __DIR__ . '/../config/cookie-consent-enhanced.php' => config_path('cookie-consent-enhanced.php'),
+            ], 'cookie-consent-enhanced-config');
             $this->publishes([
-                __DIR__ . '/../resources/lang' => lang_path('vendor/cookie-consent'),
-            ], 'cookie-consent-translations', 'laravel-assets');
+                __DIR__ . '/../resources/lang' => lang_path('vendor/cookie-consent-enhanced'),
+            ], 'cookie-consent-enhanced-translations');
             $this->publishes([
-                __DIR__ . '/../resources/views' => resource_path('views/vendor/cookie-consent'),
-            ], 'cookie-consent-views', 'laravel-assets');
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/cookie-consent-enhanced'),
+            ], 'cookie-consent-enhanced-views');
             $this->publishes([
-                __DIR__ . '/../public/css' => public_path('vendor/cookie-consent'),
-            ], 'cookie-consent-assets', 'laravel-assets');
+                __DIR__ . '/../public/css' => public_path('vendor/cookie-consent-enhanced'),
+            ], 'cookie-consent-enhanced-assets');
             $this->publishes([
-                __DIR__ . '/../public/images' => public_path('vendor/cookie-consent'),
-            ], 'cookie-consent-assets', 'laravel-assets');
+                __DIR__ . '/../public/images' => public_path('vendor/cookie-consent-enhanced'),
+            ], 'cookie-consent-enhanced-assets');
         }
     }
 

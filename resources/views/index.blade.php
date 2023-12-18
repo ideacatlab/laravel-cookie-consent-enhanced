@@ -1,5 +1,5 @@
 @if ($cookieConsentConfig['enabled'] && !$alreadyConsentedWithCookies)
-    @include('cookie-consent::dialogContents')
+    @include('cookie-consent-enhanced::dialogContents')
 
     <script>
         window.laravelCookieConsent = (function() {

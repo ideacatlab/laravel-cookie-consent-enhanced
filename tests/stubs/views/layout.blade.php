@@ -1,1 +1,1 @@
-@include('cookie-consent::index')
+@include('cookie-consent-enhanced::index')
