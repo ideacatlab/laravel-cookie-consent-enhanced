@@ -19,23 +19,16 @@ composer require ideacatlab/laravel-cookie-consent-enhanced
 
 The package will automatically register itself in your Laravel application.
 
-### 2. Publish Configuration File (Optional)
+### 2. Publish Vendor Files 
 
-For added flexibility, you have the option to publish the configuration file. Execute the following command:
+Run the publish command to publish the views, languages, database migration, config and assets.
 
-```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-config"
+```sh
+php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider"
 ```
 
-### 3. Publish Database Migrations
 
-To incorporate the necessary database structure, publish the migrations using the command:
-
-```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-migrations"
-```
-
-### 4. Migrate the Database
+### 3. Migrate the Database
 
 Execute the migration command to create the required database tables:
 
@@ -74,7 +67,7 @@ Ensure you set the cookie domain by using the 'domain' key in the `config/sessio
 
 ## Usage and Customization
 
-### Displaying the Cookie Consent Dialog
+### Displaying the Cookie Consent Dialog Using Blade Template
 
 To effortlessly display the cookie consent dialog in your template, include the following line in your Blade file:
 
@@ -84,40 +77,7 @@ To effortlessly display the cookie consent dialog in your template, include the 
 
 This will render a dialog similar to the one depicted below. Note that the default styling, powered by TailwindCSS v2, creates a floating banner at the bottom of the page.
 
-![Cookie Consent Dialog](https://raw.githubusercontent.com/ideacatlab/laravel-cookie-consent-enhanced/master/.github/images/dialog.png)
-
-Upon clicking "Allow cookies," a `cookie_consent` cookie will be set, and the dialog will be removed from the DOM. Laravel, recognizing the set `laravel_cookie_consent` cookie on subsequent requests, will refrain from displaying the dialog again.
-
-### Customizing Dialog Texts
-
-If you wish to modify the text displayed in the dialog, publish the language files using the following command:
-
-```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-enhanced-translations"
-```
-
-This will publish the file to `resources/lang/vendor/cookie-consent-enhanced/en/texts.php`. You can then customize the text as follows:
-
-```php
-return [
-    'message' => 'Please be informed that this site uses cookies.',
-    'agree' => 'Allow cookies',
-];
-```
-
-For translations, copy the file to, for instance, `resources/lang/vendor/cookie-consent-enhanced/fr/texts.php` and provide the French translations.
-
-### Customizing Dialog Contents
-
-For full control over the dialog contents, publish the package views:
-
-```bash
-php artisan vendor:publish --provider="Ideacatlab\LaravelCookieConsentEnhanced\CookieConsentServiceProvider" --tag="cookie-consent-views"
-```
-
-This will copy the `index` and `dialogContents` view files to `resources/views/vendor/cookie-consent-enhanced`. Typically, you only need to modify the `dialogContents` view. Adjusting the JavaScript code is possible in the `index` view file.
-
-### Using the Middleware
+### Displaying the Cookie Consent Dialog Using the Middleware
 
 Instead of manually including `cookie-consent-enhanced::index` in your view, consider adding the middleware to your kernel:
 
@@ -137,9 +97,26 @@ class Kernel extends HttpKernel
 
 This will automatically add `cookie-consent-enhanced::index` to your response just before the closing body tag.
 
-### Notice
+![Cookie Consent Dialog](https://raw.githubusercontent.com/ideacatlab/laravel-cookie-consent-enhanced/master/.github/images/dialog.png)
 
-While this package goes a long way towards compliance, it's essential to note that the legislation regarding cookie warnings is vague. For absolute certainty about your website's compliance, consulting a legal expert is recommended.
+Upon clicking "Allow cookies," a `cookie_consent` cookie will be set, and the dialog will be removed from the DOM. Laravel, recognizing the set `laravel_cookie_consent` cookie on subsequent requests, will refrain from displaying the dialog again.
+
+### Customizing Dialog Texts
+
+The files is published to `resources/lang/vendor/cookie-consent-enhanced/en/texts.php`. You can then customize the text as follows:
+
+```php
+return [
+    'message' => 'Please be informed that this site uses cookies.',
+    'agree' => 'Allow cookies',
+];
+```
+
+For translations, copy the file to, for instance, `resources/lang/vendor/cookie-consent-enhanced/fr/texts.php` and provide the French translations.
+
+### Customizing Dialog Contents
+
+The files is published to the `index` and `dialogContents` view files to `resources/views/vendor/cookie-consent-enhanced`. Typically, you only need to modify the `dialogContents` view. Adjusting the JavaScript code is possible in the `index` view file.
 
 ## Testing
 
@@ -149,18 +126,9 @@ Execute the following command to run tests:
 composer test
 ```
 
-## Contributing
-
-Please refer to [CONTRIBUTING](https://github.com/ideacatlab/.github/blob/main/CONTRIBUTING.md) for details.
-
 ## Security
 
 If you discover any security-related issues, please contact razvan@ideacat.ro instead of using the issue tracker.
-
-## Credits
-
-- [Razvan Gheorghe](https://github.com/ideacatlab)
-- [All Contributors](../../contributors)
 
 ## License
 
