@@ -32,15 +32,7 @@ class CookieConsentServiceProvider extends PackageServiceProvider
         $this->app->resolving(EncryptCookies::class, function (EncryptCookies $encryptCookies) {
             $encryptCookies->disableFor(config('cookie-consent-enhanced.cookie_name'));
         });
-    }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
         if (app()->runningInConsole()) {
             $this->registerMigrations();
             $this->publishes([
@@ -48,6 +40,21 @@ class CookieConsentServiceProvider extends PackageServiceProvider
             ], 'cookie-consent-enhanced-migrations');
         }
     }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    // public function boot(): void
+    // {
+    //     if (app()->runningInConsole()) {
+    //         $this->registerMigrations();
+    //         $this->publishes([
+    //             __DIR__ . '/../database/migrations' => database_path('migrations'),
+    //         ], 'cookie-consent-enhanced-migrations');
+    //     }
+    // }
 
     /**
      * Register Laravel Cookie Consent Enhanced's migration files.
